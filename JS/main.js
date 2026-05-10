@@ -136,3 +136,20 @@ function clickConfig() {
         };
     });
 }
+// lógica del btn de búsqueda
+btnSearch.addEventListener('click', () => {
+    const query = input.value.trim().toLowerCase();
+    const results = launchList.find(l => l.name.toLowerCase().includes(query));//buscamos si el nombre del lanzamiento vcontiene lo q se busca con .includes(query)
+    if (results) {
+        displayLaunch(results);
+    } else {
+        detailsContainer.innerHTML = `<p style="color:gold">Launch not found.</p>`;
+    }
+});
+
+// lógica de búsqueda al presionar Enter
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        btnSearch.click();
+    }
+});
