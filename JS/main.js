@@ -57,3 +57,28 @@ async function init() {
     // activamos los clics en las cards
     clickConfig();
 }
+// función para generar las catrtas del carrusel desde launchList
+function renderCards() {
+    //toma el div para el carrusel del html
+    const carousel = document.getElementById('launch-carousel');
+    // tomamos solo 10 para el carrusel visual
+    const carouselItems = launchList.slice(0, 10);
+
+    // fix: usamos setProperty para que la variable CSS --n funcione correctamente
+    carousel.style.setProperty('--n', carouselItems.length);
+    //Limpiamos el carrusel para no duplicar alguna carta
+    carousel.innerHTML = '';
+
+    carouselItems.forEach((launch, index) => {
+        const img = document.createElement('img');
+        //acceso a la imagen que nos da el api ||si los links o patch son son undefined, entonces usa esta imagen de placeholder como respaldo
+        img.src = launch.links?.patch?.small || 'https://via.placeholder.com/200x200?text=No+Patch';
+        img.alt = launch.name;
+        //creamos o asignamos una clase para que el carrusel haga su función
+        img.className = 'card';
+        // fix: usamos setProperty para que --i funcione en el carrusel 3D
+        img.style.setProperty('--i', index);
+        img.onerror = () => { img.src = 'https://via.placeholder.com/200x200?text=No+Patch'; };//si la imagen falla lo remplaza con el place holder
+        carousel.appendChild(img);
+    });
+}
