@@ -58,7 +58,6 @@ body{
     overflow: hidden;
 }
 
-/* ← FIX: eliminado el salto de línea que rompía el selector */
 .search-box {
     position: absolute;
     z-index: 100;
@@ -154,4 +153,61 @@ footer {
     border-radius: 10px;
     margin-left: 10%;
     background-color: rgba(255, 255, 255, 0.3);
+}
+.load {
+    display: none;
+    color: cyan;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(0, 255, 221, 0.2);
+    border-top: 3px solid #00ffdd;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin: 0 auto 5px auto;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.welcome-img {
+    display: flex;
+    align-items: center;      
+    justify-content: center;  
+    height: 100vh;            
+    font-size: 8rem;  
+}
+
+.welcome-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    justify-content: center;  
+    height: 100vh;            
+    gap: 12px;
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome-title {
+    color: #00e5ff;
+    font-size: 1.8rem;        
+    font-style: normal;
+}
+
+.welcome-sub {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    line-height: 1.8;
 }
