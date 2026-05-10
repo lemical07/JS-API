@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpaceX Launches</title>
+    <link rel="stylesheet" href="./CSS/style.css">>
+</head>
+<body>
+
+    <header class="header">
+        <!--cartas generadas directamente por JS que vienen del API -->
+         
+        <div class="scene">
+            <div class="a3d" id="launch-carousel">
+                <!-- Se inyectará aquí las cartas  desde la API -->
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search launch..." class="centered-input" id="input-search">
+            <button class="search-btn" id="btn-searchh"> Search </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="search">
+            <h3>Image</h3>
+            <div class="back1" id="img-container"></div>
+        </div>
+        <div class="info">
+            <h3>Details</h3>
+            <div class="back2" id="details-container"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 - Ical.</p>
+        </div>
+    </footer>
+
+    <script src="./JS/main.js"></script>
+</body>
+</html>
