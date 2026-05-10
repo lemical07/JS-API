@@ -82,3 +82,44 @@ function renderCards() {
         carousel.appendChild(img);
     });
 }
+// función para mostrar el detalle de un lanzamiento
+function displayLaunch(launch) {
+    // imagen del parche de la misión con fallback
+    const imgSrc = launch.links?.patch?.small || 'https://via.placeholder.com/300x300?text=No+Image';
+
+    imageContainer.innerHTML = `
+        <img src="${imgSrc}" 
+             alt="${launch.name}" 
+             style="width:100%; border-radius:15px; box-shadow: 0 0 15px cyan;"
+             onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+    `;
+
+    // formateamos la fecha de forma legible
+    const fecha = new Date(launch.date_utc).toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    // estado del lanzamiento
+    const estado = launch.upcoming
+        ? 'Upcoming'
+        : launch.success
+            ? '✅ Success'
+            : '❌ Failed';
+
+    // otros links relacionados con el lanzamiento (video, wikipedia)
+    const youtubeLink = launch.links?.webcast
+        ? `<a href="${launch.links.webcast}" target="_blank" style="color:#00e5ff; text-decoration: none" >Watch a video</a>`
+        : '';
+    const wikiLink = launch.links?.wikipedia
+        ? `<a href="${launch.links.wikipedia}" target="_blank" style="color:#00e5ff; text-decoration: none" >Wikipedia</a>`
+        : '';
+
+    detailsContainer.innerHTML = `
+        <h2 style="color:#00e5ff;">🚀 ${launch.name}</h2>
+        <p><strong>Flight Number:</strong> #${launch.flight_number}</p>
+        <p><strong>Date:</strong> ${fecha}</p>
+        <p><strong>Status:</strong> ${estado}</p>
+        <p><strong>Details:</strong> ${launch.details || 'No details available.'}</p>
+        <p>${youtubeLink} &nbsp; ${wikiLink}</p>
+    `;
+}
