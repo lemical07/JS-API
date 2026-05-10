@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #000000;
+}
+
+.scene, .a3d{
+    display: grid;
+}
+.scene{
+    overflow: hidden;
+    perspective: 35em;
+    mask: linear-gradient(90deg, #0000, red 20% 80%, #0000);
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.a3d{
+    place-self: center;
+    transform-style: preserve-3d;
+    animation: ry 35s linear infinite;
+}
+@keyframes ry{
+    to{
+        rotate: y 1turn;
+    }
+}
+
+.card{
+    --w: 40em;
+    --ba: 1turn/var(--n);
+    grid-area: 1/1;
+    width: var(--w);
+    aspect-ratio: 8/10;
+    object-fit: cover;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    transform: 
+        rotateY(calc(var(--i)*var(--ba))) translateZ(calc(-1.3*(.5*var(--w) + 1em)/tan(.6*var(--ba))));
+    cursor: pointer; /* ← NUEVO: indica que son clicables */
+}
+@media(prefers-reduced-motion:reduce){
+    .a3d{
+        animation-duration: 12s;
+    }
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 35vh;
+    background-image: url(/IMG/header.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* ← FIX: eliminado el salto de línea que rompía el selector */
+.search-box {
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    pointer-events: all;
+}
+
+.centered-input {
+    width: 280px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+}
+
+.search-btn {
+    padding: 8px 25px;
+    background: #6a4c93;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 4px 15px rgba(106, 76, 147, 0.4);
+}
+.search-btn:hover {
+    background: #8e6ec0;
+    transform: scale(1.05);
+}
+
+footer {
+    border-top: 2px solid #00ffbf;
+    border-bottom: 2px double #00ffbf;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.container{
+    margin-top: 10px;
+    color: white;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+}
+.search{
+    border: 1px solid #00ffdd;
+    height: 100vh;
+    text-align: center;
+    font-style: italic;
+    font-weight: 20rem;
+    background-image: url(/IMG/img.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 32px;
+}
+.info{
+    text-align: center;
+    border: 1px solid #00ffdd;
+    height: 100vh;
+    font-style: italic;
+    font-weight: 1rem;
+    font-size: 1.5rem;
+    background-image: url(/IMG/found.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.front1{
+    width: 80%;
+    height: 100vh;
+    border-radius: 10px;
+    margin-left: 10%;
+    background-color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    align-items: center;
+}
+.front2{
+    width: 80%;
+    height: 100vh;
+    border-radius: 10px;
+    margin-left: 10%;
+    background-color: rgba(255, 255, 255, 0.3);
+}
