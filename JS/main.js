@@ -153,3 +153,5 @@ input.addEventListener('keydown', (e) => {
         btnSearch.click();
     }
 });
+// iniciamos la aplicación
+init();
