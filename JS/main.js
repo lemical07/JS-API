@@ -123,3 +123,16 @@ function displayLaunch(launch) {
         <p>${youtubeLink} &nbsp; ${wikiLink}</p>
     `;
 }
+// función de clics en las cartas del carrusel
+function clickConfig() {
+    const cards = document.querySelectorAll('.card');//Tomamos todas las cartas del carrusel
+    cards.forEach(card => {//recoremos cada una de las caras
+        card.onclick = () => {//definimos que pasa al dar click en las cartas
+            const foundedLaunch = launchList.find(l => l.name === card.alt);//buscamos en la lista de lanzamiento cuyo nombre coincida con el alt de las cartas
+            if (foundedLaunch)
+                displayLaunch(foundedLaunch);
+            else
+                detailsContainer.innerHTML = `<p>Launch not found. Please try again.</p>`;
+        };
+    });
+}
